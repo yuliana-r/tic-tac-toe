@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="https://kit.fontawesome.com/f5ed9082ee.js" crossorigin="anonymous"></script>
     <link rel="icon" href="./images/icon.png">
@@ -7,7 +8,43 @@
     <script src="./script.js" defer></script>
     <title>Tic-Tac-Toe</title>
 </head>
-<body>
-    
+
+<body class="flex">
+    <div class="title">
+        <h1>Tic-Tac-Toe</h1>
+        <div class="menu flex">
+            <div class="marker flex">
+                <p>Choice:</p>
+                <div class="buttons flex">
+                    <button id="option-X">X</button>
+                    <button id="option-O">O</button>
+                </div>
+            </div>
+
+            <div class="opponent flex">
+                <p>Opponent:</p>
+                <div class="buttons flex">
+                    <button><i class="fa-solid fa-user"></i></button>
+                    <button><i class="fa-solid fa-robot"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameboard">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <button id="reset">Restart</button>
+
 </body>
+
 </html>

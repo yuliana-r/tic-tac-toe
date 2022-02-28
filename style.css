@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rampart+One&display=swap');
+
+html,
+body {
+    min-height: 100%;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+body {
+    flex-direction: column;
+    margin: 0;
+    background-color: #fafafa;
+}
+
+h1 {
+    font-family: 'Rampart One', cursive;
+    font-size: 3.5em;
+    letter-spacing: 10px;
+    color: #404040;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #4d4d4d;
+    margin: 10px;
+}
+
+div.buttons button {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    font-family: 'Fredoka One', cursive;
+    background-color: #fff;
+    border: 1px solid #b3b3b3;
+    border-radius: 30px;
+}
+
+div.buttons button:hover {
+    cursor: pointer;
+}
+
+.buttons {
+    gap: 10px;
+}
+
+.fa-user,
+.fa-robot {
+    color: #9F6B7F;
+}
+
+.menu {
+    justify-content: center;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.marker,
+.opponent {
+    flex-direction: column;
+}
+
+#gameboard {
+    background-color: #808080;
+    border-radius: 10px;
+    border: 5px solid #808080;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    height: 400px;
+    margin: 0 auto;
+    width: 400px;
+}
+
+
+.box {
+    align-items: center;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    border: 5px solid #808080;
+    display: flex;
+    font-family: 'Fredoka One', cursive;
+    font-size: 4em;
+    font-weight: bold;
+    justify-content: center;
+}
+
+#option-O {
+    color: #64b0d9;
+}
+
+#option-X {
+    color: #d92525;
+}
+
+#reset {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    margin: 20px;
+}

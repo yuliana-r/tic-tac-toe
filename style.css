@@ -16,7 +16,7 @@ body {
 h1 {
     font-family: 'Rampart One', cursive;
     font-size: 3.75em;
-    letter-spacing: 10px;
+    letter-spacing: 15px;
     color: #535353;
     margin-bottom: 20px;
 }
@@ -109,9 +109,9 @@ div.buttons button:hover {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     margin: 25px;
-    color: #535353;
-    border: 1px solid #b3b3b3;
-    background-color: #fdfdfd;
+    border: 1px solid #429f9e;
+    background-color: #4ab3b2;
+    color: #fff;
     border-radius: 15px;
     height: 45px;
     width: 110px;

@@ -1,4 +1,3 @@
-
 const resetBtn = document.getElementById('reset');
 const boxes = document.querySelectorAll('.box');
 

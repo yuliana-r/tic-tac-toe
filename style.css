@@ -109,8 +109,8 @@ div.buttons button:hover {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     margin: 25px;
-    border: 1px solid #429f9e;
-    background-color: #4ab3b2;
+    border: none;
+    background-color: #64b0d9;
     color: #fff;
     border-radius: 15px;
     height: 45px;

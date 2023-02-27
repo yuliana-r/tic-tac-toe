@@ -1,122 +1,95 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rampart+One&display=swap");
 
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  height: 100vh;
-  margin: 0;
-  flex-direction: column;
-  background-color: #fafafa;
+    margin: 0;
+    flex-direction: column;
+    background-color: #fafafa;
+    justify-content: center;
 }
 
 h1 {
-  font-family: "Rampart One", cursive;
-  font-size: 3.75em;
-  letter-spacing: 15px;
-  color: #535353;
-  margin-bottom: 20px;
-  text-align: center;
+    font-family: "Rampart One", cursive;
+    font-size: 3.75em;
+    letter-spacing: 15px;
+    color: #535353;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-p {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  color: #4d4d4d;
-  margin: 10px;
-  letter-spacing: 1px;
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: #4d4d4d;
+    margin: 1em;
+    letter-spacing: 1px;
+    text-align: center;
 }
 
 button:hover {
-  opacity: 0.8;
-}
-
-div.buttons button {
-  width: 50px;
-  height: 50px;
-  font-size: 25px;
-  font-family: "Fredoka One", cursive;
-  background-color: #fdfdfd;
-  border: 1px solid #b3b3b3;
-  border-radius: 30px;
-}
-
-div.buttons button:hover {
-  cursor: pointer;
+    opacity: 0.8;
 }
 
 .flex {
-  display: flex;
-  align-items: center;
-}
-
-.buttons {
-  gap: 10px;
-}
-
-.fa-user,
-.fa-robot {
-  color: #9f6b7f;
-}
-
-.menu {
-  justify-content: center;
-  gap: 5em;
-  margin-bottom: 2em;
-}
-
-.marker,
-.opponent {
-  flex-direction: column;
+    display: flex;
+    align-items: center;
 }
 
 #gameboard {
-  background-color: #808080;
-  border-radius: 10px;
-  border: 5px solid #808080;
-  display: grid;
-  grid-template: repeat(3, auto) / repeat(3, auto);
-  height: 400px;
-  margin: 0 auto;
-  width: 400px;
+    background-color: #808080;
+    border-radius: 10px;
+    border: 5px solid #808080;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    height: 400px;
+    margin: 0 auto;
+    width: 400px;
 }
 
-.box {
-  align-items: center;
-  background-color: #e6e6e6;
-  border-radius: 10px;
-  border: 5px solid #808080;
-  display: flex;
-  font-family: "Fredoka One", cursive;
-  font-size: 5em;
-  font-weight: bold;
-  justify-content: center;
+.cell {
+    align-items: center;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    border: 5px solid #808080;
+    display: flex;
+    font-family: "Fredoka One", cursive;
+    font-size: 5em;
+    font-weight: bold;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #e2e2e2;
 }
 
 #reset {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 20px;
-  margin: 25px;
-  border: none;
-  background-color: #64b0d9;
-  color: #fff;
-  border-radius: 15px;
-  height: 45px;
-  width: 110px;
-  font-family: "Fredoka One", cursive;
-  letter-spacing: 2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    margin: 25px;
+    border: none;
+    background-color: #64b0d9;
+    color: #fff;
+    border-radius: 15px;
+    height: 45px;
+    width: 110px;
+    font-family: "Fredoka One", cursive;
+    letter-spacing: 2px;
 }
 
 #reset:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .o {
-  color: #64b0d9;
+    color: #64b0d9;
 }
 
 .x {
-  color: #d92525;
+    color: #d92525;
 }

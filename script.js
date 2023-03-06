@@ -11,16 +11,14 @@ const Player = (mark) => {
 const gameFlow = (() => {
   const playerX = Player('x');
   const playerO = Player('o');
+
   let currentPlayer = playerX;
-  const restartBtn = document.querySelector('#reset');
 
   const switchPlayer = () => {
     currentPlayer = currentPlayer === playerX ? playerO : playerX;
   };
 
   const getCurrentPlayerMark = () => currentPlayer.getMark();
-
-  restartBtn.addEventListener('click', () => Gameboard.resetBoard());
 
   return {
     switchPlayer,
@@ -32,6 +30,9 @@ const Gameboard = (() => {
   const board = new Array(9).fill('');
   const cells = document.querySelectorAll('.cell');
   const gameStatusMessage = document.getElementById('game-status');
+  const restartBtn = document.querySelector('#reset');
+  const currentPlayerTurn = () => `${gameFlow.getCurrentPlayerMark().toUpperCase()} - it is your turn`;
+  gameStatusMessage.innerText = currentPlayerTurn();
 
   const checkForWin = (marker) => {
     const winConditions = [
@@ -55,14 +56,13 @@ const Gameboard = (() => {
   };
 
   const getCell = (index) => board[index];
-  const getBoard = () => [...board];
+
   const resetBoard = () => {
     board.fill('');
     cells.forEach((cell) => resetCell(cell));
-    if (gameFlow.getCurrentPlayerMark() === 'o') {
-      gameFlow.switchPlayer();
-    }
+    if (gameFlow.getCurrentPlayerMark() === 'o') { gameFlow.switchPlayer(); }
     gameStatusMessage.innerText = currentPlayerTurn();
+    document.getElementById('gameboard').style.pointerEvents = 'auto';
   };
 
   function resetCell(c) {
@@ -74,29 +74,21 @@ const Gameboard = (() => {
     const i = parseInt(e.target.dataset.index, 10);
     if (cell.innerText !== '') return;
     setCell(i);
+    const filtered = board.filter((n) => n === '');
     cell.innerText = gameFlow.getCurrentPlayerMark();
     cell.classList.add(gameFlow.getCurrentPlayerMark());
     if (checkForWin(gameFlow.getCurrentPlayerMark())) {
       gameStatusMessage.innerText = `${gameFlow.getCurrentPlayerMark().toUpperCase()} wins the game!`;
-      console.log('current player wins');
+      document.getElementById('gameboard').style.pointerEvents = 'none';
     } else {
-      gameStatusMessage.innerText = currentPlayerTurn();
       gameFlow.switchPlayer();
+      gameStatusMessage.innerText = currentPlayerTurn();
+    }
+
+    if (filtered.length === 0 && !checkForWin(gameFlow.getCurrentPlayerMark())) {
+      gameStatusMessage.innerText = 'It\'s a tie!';
     }
   }));
 
-  const isGameOver = () => {
-
-  };
-
-  const currentPlayerTurn = () => `${gameFlow.getCurrentPlayerMark().toUpperCase()} - it is your turn`;
-  gameStatusMessage.innerText = currentPlayerTurn();
-
-  return {
-    setCell,
-    getCell,
-    getBoard,
-    checkForWin,
-    resetBoard,
-  };
+  restartBtn.addEventListener('click', () => resetBoard());
 })();

@@ -31,7 +31,7 @@ h2 {
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .flex {
@@ -73,7 +73,7 @@ button:hover {
     font-size: 20px;
     margin: 25px;
     border: none;
-    background-color: #64b0d9;
+    background-color: #5a9ec3;
     color: #fff;
     border-radius: 15px;
     height: 45px;

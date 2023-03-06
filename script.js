@@ -1,9 +1,8 @@
-/* eslint-disable no-use-before-define */
 /* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
 const Player = (mark) => {
   this.mark = mark;
   const getMark = () => mark;
-
   return {
     getMark,
   };
@@ -13,30 +12,27 @@ const gameFlow = (() => {
   const playerX = Player('x');
   const playerO = Player('o');
   let currentPlayer = playerX;
+  const restartBtn = document.querySelector('#reset');
 
   const switchPlayer = () => {
-    // currentPlayer = currentPlayer === playerX ? playerO : playerX;
-    if (currentPlayer === playerX) {
-      currentPlayer = playerO;
-      console.log(currentPlayer.getMark());
-    } else {
-      currentPlayer = playerX;
-      console.log(currentPlayer.getMark());
-    }
+    currentPlayer = currentPlayer === playerX ? playerO : playerX;
   };
 
-  const getCurrentPlayer = () => currentPlayer;
+  const getCurrentPlayerMark = () => currentPlayer.getMark();
+
+  restartBtn.addEventListener('click', () => Gameboard.resetBoard());
 
   return {
     switchPlayer,
-    getCurrentPlayer,
+    getCurrentPlayerMark,
   };
 })();
 
 const Gameboard = (() => {
   const board = new Array(9).fill('');
   const cells = document.querySelectorAll('.cell');
-  const restartBtn = document.querySelector('#reset');
+  let gameOver = false;
+  const gameStatusMessage = document.getElementById('game-status');
 
   const checkForWin = (marker) => {
     const winConditions = [
@@ -49,39 +45,22 @@ const Gameboard = (() => {
       [0, 4, 8],
       [2, 4, 6],
     ];
+
+    return winConditions
+      .some((combination) => combination
+        .every((index) => getCell(index) === marker));
   };
 
   const setCell = (index) => {
-    // console.log(board);
-    board[index] = gameFlow.getCurrentPlayer().getMark();
-
-    console.log(`current -${gameFlow.getCurrentPlayer().getMark()}`);
-    // gameFlow.switchPlayer();
-
-    // cell.innerText = gameFlow.currentPlayer.getMark();
+    board[index] = gameFlow.getCurrentPlayerMark();
   };
 
   const getCell = (index) => board[index];
   const getBoard = () => [...board];
   const resetBoard = () => {
     board.fill('');
-    console.log(board);
     cells.forEach((cell) => resetCell(cell));
-    // gameFlow.currentPlayer = 'X';
-    // gameFlow.gameStatusMessage.innerText = gameFlow.currentPlayerTurn;
   };
-
-  // function handleClick(e) {
-  //   const clickedCell = e.target;
-  //   console.log(clickedCell);
-  //   const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
-  //   console.log(clickedCellIndex);
-  //   console.log(board[clickedCellIndex]);
-
-  //   if (board[clickedCellIndex] === '') {
-  //     setCell(clickedCell, clickedCellIndex);
-  //   }
-  // }
 
   function resetCell(c) {
     c.innerText = '';
@@ -90,19 +69,22 @@ const Gameboard = (() => {
 
   cells.forEach((cell) => cell.addEventListener('click', (e) => {
     const i = parseInt(e.target.dataset.index, 10);
+    if (cell.innerText !== '') return;
     setCell(i);
-    console.log(board);
-    cell.innerText = gameFlow.getCurrentPlayer().getMark();
-    cell.classList.add(gameFlow.getCurrentPlayer().getMark());
+    cell.innerText = gameFlow.getCurrentPlayerMark();
+    cell.classList.add(gameFlow.getCurrentPlayerMark());
+    if (checkForWin(gameFlow.getCurrentPlayerMark())) {
+      gameStatusMessage.innerText = `${gameFlow.getCurrentPlayerMark().toUpperCase()} wins the game!`;
+      console.log('current player wins');
+      gameOver = true;
+      return;
+    }
     gameFlow.switchPlayer();
-
-    // updateBoard();
+    gameStatusMessage.innerText = currentPlayerTurn();
   }));
 
-  function handleClick() {
-  }
-
-  restartBtn.addEventListener('click', () => resetBoard());
+  const currentPlayerTurn = () => `${gameFlow.getCurrentPlayerMark().toUpperCase()} - it is your turn`;
+  gameStatusMessage.innerText = currentPlayerTurn();
 
   return {
     setCell,
@@ -111,10 +93,4 @@ const Gameboard = (() => {
     checkForWin,
     resetBoard,
   };
-})();
-
-const displayController = (() => {
-  const gameStatusMessage = document.getElementById('game-status');
-  const currentPlayerTurn = () => `It's ${gameFlow.getCurrentPlayer().getMark()}'s turn`;
-  gameStatusMessage.innerText = currentPlayerTurn();
 })();

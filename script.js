@@ -31,7 +31,6 @@ const gameFlow = (() => {
 const Gameboard = (() => {
   const board = new Array(9).fill('');
   const cells = document.querySelectorAll('.cell');
-  let gameOver = false;
   const gameStatusMessage = document.getElementById('game-status');
 
   const checkForWin = (marker) => {
@@ -60,6 +59,10 @@ const Gameboard = (() => {
   const resetBoard = () => {
     board.fill('');
     cells.forEach((cell) => resetCell(cell));
+    if (gameFlow.getCurrentPlayerMark() === 'o') {
+      gameFlow.switchPlayer();
+    }
+    gameStatusMessage.innerText = currentPlayerTurn();
   };
 
   function resetCell(c) {
@@ -76,12 +79,15 @@ const Gameboard = (() => {
     if (checkForWin(gameFlow.getCurrentPlayerMark())) {
       gameStatusMessage.innerText = `${gameFlow.getCurrentPlayerMark().toUpperCase()} wins the game!`;
       console.log('current player wins');
-      gameOver = true;
-      return;
+    } else {
+      gameStatusMessage.innerText = currentPlayerTurn();
+      gameFlow.switchPlayer();
     }
-    gameFlow.switchPlayer();
-    gameStatusMessage.innerText = currentPlayerTurn();
   }));
+
+  const isGameOver = () => {
+
+  };
 
   const currentPlayerTurn = () => `${gameFlow.getCurrentPlayerMark().toUpperCase()} - it is your turn`;
   gameStatusMessage.innerText = currentPlayerTurn();

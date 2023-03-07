@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yuliana-r/tic-tac-toe.git"
+    "url": "https://github.com/yuliana-r/tic-tac-toe.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yuliana-r/tic-tac-toe/issues"
+    "url": "https://github.com/yuliana-r/tic-tac-toe/"
   },
-  "homepage": "https://github.com/yuliana-r/tic-tac-toe#readme",
+  "homepage": "https://github.com/yuliana-r/tic-tac-toe",
   "devDependencies": {
     "eslint": "^8.34.0",
     "eslint-config-airbnb-base": "^15.0.0",

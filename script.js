@@ -87,6 +87,7 @@ const Gameboard = (() => {
 
     if (filtered.length === 0 && !checkForWin(gameFlow.getCurrentPlayerMark())) {
       gameStatusMessage.innerText = 'It\'s a tie!';
+      document.getElementById('gameboard').style.pointerEvents = 'none';
     }
   }));
 

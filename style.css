@@ -18,6 +18,7 @@ h1 {
     color: #535353;
     margin-bottom: 20px;
     text-align: center;
+    user-select: none;
 }
 
 h2 {
@@ -28,6 +29,7 @@ h2 {
     margin: 1em;
     letter-spacing: 1px;
     text-align: center;
+    user-select: none;
 }
 
 a {
@@ -36,6 +38,8 @@ a {
     font-size: 20px;
     margin: 0.5em 0;
     text-decoration: none;
+    user-select: none;
+    cursor: pointer;
 }
 
 a:hover {
@@ -92,6 +96,8 @@ button:hover {
     width: 110px;
     font-family: "Fredoka One", cursive;
     letter-spacing: 2px;
+    user-select: none;
+    cursor: pointer;
 }
 
 #reset:hover {
